@@ -1,0 +1,237 @@
+[gd_scene load_steps=22 format=3 uid="uid://ork4gub637n8"]
+
+[ext_resource type="Script" path="res://Scripts/NPC.gd" id="1_lh70k"]
+[ext_resource type="Texture2D" uid="uid://dc6uuyy2vuy3v" path="res://Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Skeleton/PNG/skeleton_idle_strip6.png" id="4_cng0p"]
+[ext_resource type="Texture2D" uid="uid://rb3kla0t0bc2" path="res://Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Skeleton/PNG/skeleton_walk_strip8.png" id="7_knoac"]
+[ext_resource type="Script" path="res://Scripts/HTTPRequest.gd" id="8_y8mnj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5yc02"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo2sr"]
+atlas = ExtResource("4_cng0p")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf2ed"]
+atlas = ExtResource("4_cng0p")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n37cs"]
+atlas = ExtResource("4_cng0p")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vspn"]
+atlas = ExtResource("4_cng0p")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d3dm"]
+atlas = ExtResource("4_cng0p")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s7bp"]
+atlas = ExtResource("4_cng0p")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8vnh"]
+atlas = ExtResource("7_knoac")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nmi7"]
+atlas = ExtResource("7_knoac")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xnuc"]
+atlas = ExtResource("7_knoac")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2xmx"]
+atlas = ExtResource("7_knoac")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy7uj"]
+atlas = ExtResource("7_knoac")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hnih"]
+atlas = ExtResource("7_knoac")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vvvj"]
+atlas = ExtResource("7_knoac")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnnbd"]
+atlas = ExtResource("7_knoac")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kf8uu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo2sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf2ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n37cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vspn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d3dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s7bp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8vnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nmi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xnuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2xmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy7uj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hnih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vvvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnnbd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oilbo"]
+size = Vector2(70, 54)
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_lh70k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5yc02")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kf8uu")
+animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_oilbo")
+
+[node name="NPCInteractLabel" type="Label" parent="."]
+offset_left = -71.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 9
+text = "Press 'i' to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextBox" type="CanvasLayer" parent="."]
+
+[node name="TextBoxBoundary" type="ColorRect" parent="TextBox"]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.227451, 0.223529, 0.207843, 0.415686)
+
+[node name="NPCDialogue" type="Label" parent="TextBox"]
+visible = false
+anchors_preset = -1
+anchor_top = 0.994
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -49.92
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "This is a text box"
+autowrap_mode = 3
+
+[node name="ContinueLabel" type="Label" parent="TextBox"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "Press 'c' to continue"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="SubmitInput" type="Label" parent="TextBox"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "Press 'enter' to continue"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ExitLabel" type="Label" parent="TextBox"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "Press 'esc' to exit interaction"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="UserInput" type="LineEdit" parent="TextBox"]
+visible = false
+offset_top = 130.0
+offset_right = 319.0
+offset_bottom = 161.0
+editable = false
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+script = ExtResource("8_y8mnj")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="text_submitted" from="TextBox/UserInput" to="." method="_on_user_input_text_submitted"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cogavqaia1wnb"]
+
+[ext_resource type="PackedScene" uid="uid://d2h6omo3q46kq" path="res://Scenes/Map.tscn" id="1_7fob5"]
+[ext_resource type="PackedScene" uid="uid://chjbwaof7cbie" path="res://Scenes/Player.tscn" id="1_rt7um"]
+[ext_resource type="PackedScene" uid="uid://djt22gp25kcks" path="res://Scenes/pickup.tscn" id="3_nwwi6"]
+[ext_resource type="PackedScene" uid="uid://ork4gub637n8" path="res://Scenes/NPC.tscn" id="4_hj0qd"]
+[ext_resource type="PackedScene" uid="uid://diaxnvlud6hgw" path="res://Scenes/Goblin.tscn" id="5_vuoon"]
+
+[node name="Main" type="Node2D" groups=["full_scene"]]
+
+[node name="Map" parent="." instance=ExtResource("1_7fob5")]
+
+[node name="Player" parent="." instance=ExtResource("1_rt7um")]
+position = Vector2(86, 74)
+
+[node name="Pickup" parent="." instance=ExtResource("3_nwwi6")]
+position = Vector2(776, 249)
+
+[node name="NPC" parent="." instance=ExtResource("4_hj0qd")]
+position = Vector2(608, 157)
+
+[node name="Goblin" parent="." groups=["full_scene"] instance=ExtResource("5_vuoon")]
+position = Vector2(1266, 161)
+
+[node name="Pickup2" parent="." instance=ExtResource("3_nwwi6")]
+position = Vector2(179, 74)
+
+[node name="Pickup3" parent="." instance=ExtResource("3_nwwi6")]
+position = Vector2(260, 73)
+item = 1
